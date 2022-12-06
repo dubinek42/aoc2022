@@ -9,12 +9,15 @@ filename = "inputs/input01.txt"
 main :: IO ()
 main = do
     input <- readFile filename
-    let part1 = elves1 input
-        part2 = elves2 input
+    let part1 = calories1 (parseInput input)
+        part2 = calories2 (parseInput input)
     putStr $ show part1 <> " " <> show part2
 
-elves1 :: String -> Int  
-elves1 s = maximum $ map (sum . map read) $ splitOn [""] $ lines s
+parseInput :: String -> [Int]
+parseInput s = map (sum . map read) $ splitOn [""] $ lines s
 
-elves2 :: String -> Int
-elves2 s = sum $ take 3 $ reverse $ sort $ map (sum . map read) $ splitOn [""] $ lines s
+calories1 :: [Int] -> Int  
+calories1 xs = maximum xs
+
+calories2 :: [Int] -> Int
+calories2 xs = sum $ take 3 $ reverse $ sort xs
