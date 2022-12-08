@@ -1,4 +1,4 @@
-module Day08 where
+module Day03 where
 
 import System.IO
 import Data.Char
